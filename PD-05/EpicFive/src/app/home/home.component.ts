@@ -14,6 +14,8 @@ export class HomeComponent implements OnInit {
   singleError!: string;
   tenSuccess!: string;
   tenError!: string;
+  unitsError!: string;
+  fromAddress!: string;
 
   constructor() { }
 
@@ -21,8 +23,20 @@ export class HomeComponent implements OnInit {
     const tokenAbi = require('../../assets/contract-info/epicfive.json');
 
     let web3 = new Web3(Web3.givenProvider || "http://localhost:8545");
+    const network = web3.eth.net.getId().then((res: any) => {
+      if (typeof res === 'undefined' || res != 4) { 
+        console.log("Please select Rinkeby test network");
+      } else {
+        console.log("Ethereum network: Rinkeby")
+      }
+    });
+
+    const accounts = web3.eth.getAccounts().then((res: any) => {
+      this.fromAddress = res[0];
+      console.log(this.fromAddress);
+    });
     
-    var Address = "0x29f51B24F8146B5dd065c6c0B504D1b58A317d77";
+    var Address = "0xCaF3F4dA4F4f9FaE8A6De925eFE6F8f430f3e428";
     this.epicFive = new web3.eth.Contract(tokenAbi, Address);
     console.log(this.epicFive);
   }
@@ -35,7 +49,7 @@ export class HomeComponent implements OnInit {
   }
 
   pullSingleUnit() {
-    this.epicFive.methods.pullSingleUnit().send({from:"0xEB3695CCc510e471857e306E7C17bb331DE06785"}).then((res: any) => {
+    this.epicFive.methods.pullSingleUnit().send({from: this.fromAddress}).then((res: any) => {
       this.singleSuccess = res;
       console.log(res);
     }).catch((err: any) => {
@@ -45,9 +59,9 @@ export class HomeComponent implements OnInit {
   }
 
   pullTenUnits() {
-    this.epicFive.methods.pullTenUnits().send({from:"0xEB3695CCc510e471857e306E7C17bb331DE06785"}).then((res: any) => {
+    this.epicFive.methods.pullTenUnits().send({from: this.fromAddress}).then((res: any) => {
       this.tenSuccess = res;
-      console.log(res);
+      console.log(res.events.Summon.returnValues['units']);
     }).catch((err: any) => {
       this.tenError = err;
       console.error(err);
@@ -58,6 +72,9 @@ export class HomeComponent implements OnInit {
     this.epicFive.methods.getUnits().call().then((res: any) => {
       this.units = res;
       console.log(res);
+    }).catch((err: any) => {
+      this.unitsError = err;
+      console.log(err);
     });
   }
 
