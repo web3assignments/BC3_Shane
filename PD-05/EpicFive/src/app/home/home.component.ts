@@ -36,7 +36,7 @@ export class HomeComponent implements OnInit {
       console.log(this.fromAddress);
     });
     
-    var Address = "0xCaF3F4dA4F4f9FaE8A6De925eFE6F8f430f3e428";
+    var Address = "0x45Cc8Df96731e36351ce467Bc93527809e62303C";
     this.epicFive = new web3.eth.Contract(tokenAbi, Address);
     console.log(this.epicFive);
   }
