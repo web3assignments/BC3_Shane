@@ -10,6 +10,7 @@ export class HomeComponent implements OnInit {
   epicFive: any;
   balance!: string;
   units!: string;
+  newUnits!: string;
   singleSuccess!: string;
   singleError!: string;
   tenSuccess!: string;
@@ -36,7 +37,7 @@ export class HomeComponent implements OnInit {
       console.log(this.fromAddress);
     });
     
-    var Address = "0x45Cc8Df96731e36351ce467Bc93527809e62303C";
+    var Address = "0xe92F87aE82d4c3b234B0877C6cb6e59D062Ba402";
     this.epicFive = new web3.eth.Contract(tokenAbi, Address);
     console.log(this.epicFive);
   }
@@ -60,8 +61,9 @@ export class HomeComponent implements OnInit {
 
   pullTenUnits() {
     this.epicFive.methods.pullTenUnits().send({from: this.fromAddress}).then((res: any) => {
-      this.tenSuccess = res;
-      console.log(res.events.Summon.returnValues['units']);
+      this.tenSuccess = res.events.Summon.returnValues[0];
+      this.newUnits = this.tenSuccess.slice(res.events.Summon.returnValues[0].length - 10, res.events.Summon.returnValues[0].length);
+      console.log(this.newUnits);
     }).catch((err: any) => {
       this.tenError = err;
       console.error(err);

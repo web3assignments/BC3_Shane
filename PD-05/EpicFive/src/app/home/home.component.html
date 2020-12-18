@@ -3,7 +3,7 @@
     <div class="col">
       <button type="button" class="btn btn-primary btn-lg" (click)="getBalance()">See your balance</button>
       <div *ngIf="balance" class="balance">
-        Your current balance is: {{ balance }}
+        <b>Your current balance is: </b> {{ balance }}
       </div>
       <button type="button" class="btn btn-primary btn-lg" (click)="pullSingleUnit()">Pull 1 unit</button>
       <div *ngIf="singleSuccess" class="singlePull">
@@ -14,14 +14,14 @@
       </div>
       <button type="button" class="btn btn-primary btn-lg" (click)="pullTenUnits()">Pull 10 units</button>
       <div *ngIf="tenSuccess" class="tenPull">
-        You successfully pulled 10 units.
+        <b>You successfully pulled 10 units: </b> {{ newUnits }}
       </div>
       <div *ngIf="tenError" class="tenPull">
         You do not have enough gems to do a 10 summon
       </div>
       <button type="button" class="btn btn-primary btn-lg" (click)="getUnits()">Check your units</button>
       <div *ngIf="units" class="units">
-        Your current units are: {{ units }}
+        <b>Your current units are: </b> {{ units }}
       </div>
       <div *ngIf="unitsError" class="tenPull">
         No units available to retrieve.
