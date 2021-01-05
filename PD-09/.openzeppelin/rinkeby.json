@@ -1,0 +1,121 @@
+{
+  "manifestVersion": "3.1",
+  "impls": {
+    "49449b18590037fe381d740c3cfed1a6e0adb83ed2a791f0187ad58e26033ad2": {
+      "address": "0x7e40ac169d64D035e286D0fF5AcE3372a3300efF",
+      "txHash": "0x5d53f5131bc3aea965baad2e149c6931c24ccaa18fb2f0839f50b3fc2760d2a8",
+      "layout": {
+        "storage": [
+          {
+            "contract": "usingProvable",
+            "label": "provable",
+            "type": "t_contract(ProvableI)798",
+            "src": "..\\..\\..\\D\\School\\truffle_contract\\contracts\\ProvableAPI_0.6.sol:259"
+          },
+          {
+            "contract": "usingProvable",
+            "label": "OAR",
+            "type": "t_contract(OracleAddrResolverI)804",
+            "src": "..\\..\\..\\D\\School\\truffle_contract\\contracts\\ProvableAPI_0.6.sol:260"
+          },
+          {
+            "contract": "usingProvable",
+            "label": "provable_network_name",
+            "type": "t_string_storage",
+            "src": "..\\..\\..\\D\\School\\truffle_contract\\contracts\\ProvableAPI_0.6.sol:273"
+          },
+          {
+            "contract": "usingProvable",
+            "label": "provable_randomDS_args",
+            "type": "t_mapping(t_bytes32,t_bytes32)",
+            "src": "..\\..\\..\\D\\School\\truffle_contract\\contracts\\ProvableAPI_0.6.sol:280"
+          },
+          {
+            "contract": "usingProvable",
+            "label": "provable_randomDS_sessionKeysHashVerified",
+            "type": "t_mapping(t_bytes32,t_bool)",
+            "src": "..\\..\\..\\D\\School\\truffle_contract\\contracts\\ProvableAPI_0.6.sol:281"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initialized",
+            "type": "t_bool",
+            "src": "..\\..\\..\\D\\School\\truffle_contract\\contracts\\Initializable.sol:23"
+          },
+          {
+            "contract": "Initializable",
+            "label": "_initializing",
+            "type": "t_bool",
+            "src": "..\\..\\..\\D\\School\\truffle_contract\\contracts\\Initializable.sol:28"
+          },
+          {
+            "contract": "Gachagang",
+            "label": "queryId",
+            "type": "t_bytes32",
+            "src": "..\\..\\..\\D\\School\\truffle_contract\\contracts\\EpicFive.sol:14"
+          },
+          {
+            "contract": "Gachagang",
+            "label": "pullCount",
+            "type": "t_uint256",
+            "src": "..\\..\\..\\D\\School\\truffle_contract\\contracts\\EpicFive.sol:18"
+          },
+          {
+            "contract": "Gachagang",
+            "label": "balance",
+            "type": "t_uint256",
+            "src": "..\\..\\..\\D\\School\\truffle_contract\\contracts\\EpicFive.sol:19"
+          },
+          {
+            "contract": "Gachagang",
+            "label": "pulls",
+            "type": "t_array(t_struct(Unit)34_storage)dyn_storage",
+            "src": "..\\..\\..\\D\\School\\truffle_contract\\contracts\\EpicFive.sol:28"
+          },
+          {
+            "contract": "Gachagang",
+            "label": "units",
+            "type": "t_mapping(t_string_memory_ptr,t_struct(Unit)34_storage)",
+            "src": "..\\..\\..\\D\\School\\truffle_contract\\contracts\\EpicFive.sol:30"
+          }
+        ],
+        "types": {
+          "t_bytes32": {
+            "label": "bytes32"
+          },
+          "t_uint256": {
+            "label": "uint256"
+          },
+          "t_array(t_struct(Unit)34_storage)dyn_storage": {
+            "label": "struct Gachagang.Unit[]"
+          },
+          "t_mapping(t_string_memory_ptr,t_struct(Unit)34_storage)": {
+            "label": "mapping(string => struct Gachagang.Unit)"
+          },
+          "t_bool": {
+            "label": "bool"
+          },
+          "t_contract(ProvableI)798": {
+            "label": "contract ProvableI"
+          },
+          "t_contract(OracleAddrResolverI)804": {
+            "label": "contract OracleAddrResolverI"
+          },
+          "t_string_storage": {
+            "label": "string"
+          },
+          "t_mapping(t_bytes32,t_bytes32)": {
+            "label": "mapping(bytes32 => bytes32)"
+          },
+          "t_mapping(t_bytes32,t_bool)": {
+            "label": "mapping(bytes32 => bool)"
+          }
+        }
+      }
+    }
+  },
+  "admin": {
+    "address": "0xACf80DE5E81B83adC27b34a997C7746012358357",
+    "txHash": "0xc4302c3c09c237ffd239d084120c78cecc0e86f9d932f60cbc808a7369b99b2f"
+  }
+}
