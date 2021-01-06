@@ -1,6 +1,6 @@
 ERC20 Token Address: 
-0x9fe7B55Ab184Fc3178b246AdC236D6264D4aDa0d
+https://rinkeby.etherscan.io/address/0x9fe7b55ab184fc3178b246adc236d6264d4ada0d
 
 ERC721 Token Address:
-0xBc93d5C75312CA912Aab580B46bA5dC9643B251e
+https://rinkeby.etherscan.io/address/0xbc93d5c75312ca912aab580b46ba5dc9643b251e
 
