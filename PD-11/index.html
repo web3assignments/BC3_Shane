@@ -1,0 +1,109 @@
+<html>
+    <head>
+        <script src="https://bundle.run/buffer@5.2.1"></script>
+        <script src="https://unpkg.com/ipfs-http-client/dist/index.min.js"></script>
+        <script src="https://unpkg.com/ipfs-api@9.0.0/dist/index.js"></script>
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    </head>
+    <body>
+		<div class="container">
+		<div class="row">
+			<h1>IPFS Shane</h1>
+            <img id="image"></img>
+		</div>
+		
+		<div class="row">
+			<div class="custom-file">
+				<label class="custom-file-label" for="customFile">Choose file</label>
+				<input type="file" class="form-control" name="uploadImage" id="uploadImage">
+				<button class="btn btn-primary" type="button" onclick="upload()">Upload</button>
+			</div>
+		</div>
+
+		<div class="row">
+            <h1>Enter image hash:</h1>
+			<input id="hashImageId"><br/>
+			<button class="btn btn-info" onclick="getImage()">Get image</button>
+		</div>
+        
+		<div class="row">
+            <h1>Log</h1>
+            <pre id="log" style="width:100%;height:200px;"></pre>
+		</div>
+
+    </body>
+    <footer>
+        <script> 
+            function log(logstr) {
+                document.getElementById('log').innerHTML += logstr+"\n";
+            }
+            async function f() {
+                var ui8arr = [];
+                const hash = 'QmeT8uhQgun4tZ5wCZDbxsHbPEd5XMPngZZdQnBZUYrdAT';
+
+                const str = "Test ipfs"
+                const ipfs = window.IpfsHttpClient("https://ipfs.infura.io:5001");
+                const version = await ipfs.version().catch(x=>log(`Error: ${x}`))
+                
+                for await (const result of ipfs.cat(hash)){
+                    ui8arr.push(result);
+                }
+
+                var blob = new Blob(ui8arr , {type: "image/jpeg"});
+                var url = URL.createObjectURL(blob);
+                document.getElementById("image").src = url;  
+            }
+
+            async function upload() {
+                const reader = new FileReader();
+                reader.onloadend = async function() {
+                    const ipfs = window.IpfsHttpClient("https://ipfs.infura.io:5001");
+                    const buf = buffer.Buffer(reader.result)
+                    const result = await ipfs.add(buf).catch(log);
+
+                    log(`cid=${result.path}`);
+
+                    let url = `https://ipfs.io/ipfs/${result.path}`
+                }
+                const uploadImage = document.getElementById("uploadImage");
+                reader.readAsArrayBuffer(uploadImage.files[0]);
+            }
+
+            async function setImage() {
+
+                input = document.getElementById('fileinput').value;
+
+                const ipfs = window.IpfsHttpClient("https://ipfs.infura.io:5001");
+                log(`Adding ${input} to ipfs via Infura`);
+                const result = await ipfs.add(input).catch(log)
+                log(`cid=${result.path}`);
+            }
+
+            async function getImage() {
+                var ui8arr = [];
+                var hash = document.getElementById('hashImageId').value;
+
+                if(hash == '') {
+                    alert('Nothing selected');
+                    return;
+                }
+
+                console.log(hash);
+
+                const ipfs = window.IpfsHttpClient("https://ipfs.infura.io:5001");
+                
+                for await (const result of ipfs.cat(hash)){
+                    ui8arr.push(result);
+                }
+
+                console.log(ui8arr);
+
+                var blob = new Blob(ui8arr , {type: "image/jpeg"});
+                var url = URL.createObjectURL(blob);
+                document.getElementById("image").src = url;                
+            }
+             
+            f();
+        </script>
+    </footer>
+</html>
