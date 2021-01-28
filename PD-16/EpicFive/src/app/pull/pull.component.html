@@ -1,0 +1,26 @@
+<app-header></app-header>
+
+<div class="container">
+    <div class="row">
+      <div class="col-md-6">
+            <button type="button" class="btn btn-primary btn-lg" (click)="pullSingleUnit()">Pull 1 unit</button>
+            <div *ngIf="singleSuccess" class="singlePull">
+                You successfully pulled 10 units. Do give it some time since the units to pull are still being calculated! This process can take up to a minute of 2-3. You can view the unit in the inventory when they are done calculating.
+            </div>
+            <div *ngIf="singleError" class="singlePull">
+            You do not have enough gems to do a summon
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <button type="button" class="btn btn-primary btn-lg" (click)="pullTenUnits()">Pull 10 units</button>
+            <div *ngIf="tenSuccess" class="tenPull">
+            You successfully pulled 10 units. Do give it some time since the units to pull are still being calculated! This process can take up to a minute of 2-3. You can view the units in the inventory when they are done calculating.
+            </div>
+            <div *ngIf="tenError" class="tenPull">
+            You do not have enough gems to do a 10 summon
+            </div>
+        </div>
+
+    </div>
+</div>
