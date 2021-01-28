@@ -18,6 +18,10 @@ body {
   h1, h2, h3, h4, h5, h6 {
     font-family: "Roboto", sans-serif;
   }
+
+  img {
+    height: -webkit-fill-available;
+  }
   
   /*--------------------------------------------------------------
   # Hero Section
@@ -194,4 +198,4 @@ body {
     margin-bottom: 0;
     color: #5f7c78;
   }
-  
+
