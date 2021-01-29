@@ -49,9 +49,6 @@ export class InventoryComponent implements OnInit {
 
     var addr = web3.eth.ens.getAddress('epicfivefinal.eth').then( (address) => {
       this.epicFive = new web3.eth.Contract(tokenAbi, address);
-      this.epicFive.events.Summon({fromBlock: "latest"}, (error: any, event: any) =>{
-        console.log(event);
-      });
       this.epicFive.methods.getUnits().call().then((res: any) => {
         this.units = res;
         this.dataSource = new MatTableDataSource(this.units);

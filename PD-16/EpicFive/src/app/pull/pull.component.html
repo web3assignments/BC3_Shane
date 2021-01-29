@@ -1,26 +1,66 @@
 <app-header></app-header>
 
-<div class="container">
-    <div class="row">
-      <div class="col-md-6">
-            <button type="button" class="btn btn-primary btn-lg" (click)="pullSingleUnit()">Pull 1 unit</button>
-            <div *ngIf="singleSuccess" class="singlePull">
-                You successfully pulled 10 units. Do give it some time since the units to pull are still being calculated! This process can take up to a minute of 2-3. You can view the unit in the inventory when they are done calculating.
+<!-- ======= Hero Section ======= -->
+<section id="hero">
+    <div class="hero-container">
+      <div id="heroCarousel" class="carousel slide carousel-fade" data-ride="carousel">
+
+        <div class="carousel-inner" role="listbox">
+
+          <!-- Slide 1 -->
+          <div class="carousel-item active">
+            <div class="carousel-background"><img src="assets/img/gacha.jpg" alt=""></div>
+            <div class="carousel-container">
+              <div class="carousel-content">
+                <h2 class="animate__animated animate__fadeInDown">Choose your pull option:<span></span></h2>
+                <p class="animate__animated animate__fadeInUp">Best character out of the pool is Kayron.</p>
+                <p class="animate__animated animate__fadeInUp">Good Luck!</p>
+
+                <div class="center">
+                    <div class="btn-left animate__animated animate__fadeInUp scrollto">
+                        <button type="button" class="btn btn-primary btn-lg" (click)="pullSingleUnit()">Pull 1</button>
+                        <div *ngIf="singleSuccess">
+                            <mat-card class="singlePull">
+                                <p class="black">
+                                    You successfully pulled 10 units. Do give it some time since the units to
+                                    pull are still being calculated! This process can take up to 2-3 minutes.
+                                </p>
+                                <p class="black">You can view the unit in the inventory when they are done calculating.</p>
+                            </mat-card>
+                        </div>
+                        <div *ngIf="singleError">
+                            <mat-card class="singlePull">
+                                You did not proceed with the payment or an error occurred.
+                            </mat-card>
+                        </div>
+                    </div>
+
+                    <div class="btn-right animate__animated animate__fadeInUp scrollto">
+                        <button type="button" class="btn btn-primary btn-lg" (click)="pullTenUnits()">Pull 10</button>
+                        <div *ngIf="tenSuccess">
+                            <mat-card class="tenPull">
+                                <p class="black">
+                                    You successfully pulled 10 units. Do give it some time since the units to pull
+                                    are still being calculated! This process can take up to 2-3 minutes.
+                                </p>
+                                <p class="black">You can view the units in the inventory when they are done calculating.
+                                </p>
+                            </mat-card>
+                        </div>
+                        <div *ngIf="tenError">
+                            <mat-card class="tenPull">
+                                You did not proceed with the payment or an error occurred.
+                            </mat-card>
+                        </div>
+                    </div>
+                </div>
+                   
+              </div>
             </div>
-            <div *ngIf="singleError" class="singlePull">
-            You do not have enough gems to do a summon
-            </div>
+          </div>
+
         </div>
 
-        <div class="col-md-6">
-            <button type="button" class="btn btn-primary btn-lg" (click)="pullTenUnits()">Pull 10 units</button>
-            <div *ngIf="tenSuccess" class="tenPull">
-            You successfully pulled 10 units. Do give it some time since the units to pull are still being calculated! This process can take up to a minute of 2-3. You can view the units in the inventory when they are done calculating.
-            </div>
-            <div *ngIf="tenError" class="tenPull">
-            You do not have enough gems to do a 10 summon
-            </div>
-        </div>
-
+      </div>
     </div>
-</div>
+  </section><!-- End Hero --> 
